@@ -87,16 +87,37 @@
 
 
 
-<meta name="description" content="Where there is a will there is a way">
+<meta name="description" content="1. 迭代就是循环
+产品迭代, 将一个产品做出来, 做出一个 &amp;quot;稳定&amp;quot; 版本.
+在其基础上通过需求调整, 算法的调整等等一系列调整得到一个新的 &amp;quot;稳定&amp;quot; 版本.
+这个过程就是迭代过程.
+
+例如使用 DOM-Core 方法设置 div 的样式
+
+&amp;lt;div style=&amp;quot;width: 200px; height: 100p; border: 1p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="oop4">
 <meta property="og:url" content="http://yoursite.com/2017/02/15/oop4/index.html">
 <meta property="og:site_name" content="帅博客">
-<meta property="og:description" content="Where there is a will there is a way">
-<meta property="og:updated_time" content="2017-02-15T15:37:28.195Z">
+<meta property="og:description" content="1. 迭代就是循环
+产品迭代, 将一个产品做出来, 做出一个 &amp;quot;稳定&amp;quot; 版本.
+在其基础上通过需求调整, 算法的调整等等一系列调整得到一个新的 &amp;quot;稳定&amp;quot; 版本.
+这个过程就是迭代过程.
+
+例如使用 DOM-Core 方法设置 div 的样式
+
+&amp;lt;div style=&amp;quot;width: 200px; height: 100p; border: 1p">
+<meta property="og:updated_time" content="2017-02-15T15:44:12.321Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="oop4">
-<meta name="twitter:description" content="Where there is a will there is a way">
+<meta name="twitter:description" content="1. 迭代就是循环
+产品迭代, 将一个产品做出来, 做出一个 &amp;quot;稳定&amp;quot; 版本.
+在其基础上通过需求调整, 算法的调整等等一系列调整得到一个新的 &amp;quot;稳定&amp;quot; 版本.
+这个过程就是迭代过程.
+
+例如使用 DOM-Core 方法设置 div 的样式
+
+&amp;lt;div style=&amp;quot;width: 200px; height: 100p; border: 1p">
 
 
 
@@ -322,7 +343,344 @@
       
 
       
-        
+        <h3 id="1-迭代"><a href="#1-迭代" class="headerlink" title="1. 迭代"></a>1. 迭代</h3><pre><code>就是循环
+产品迭代, 将一个产品做出来, 做出一个 &quot;稳定&quot; 版本.
+在其基础上通过需求调整, 算法的调整等等一系列调整得到一个新的 &quot;稳定&quot; 版本.
+这个过程就是迭代过程.
+
+例如使用 DOM-Core 方法设置 div 的样式
+
+&lt;div style=&quot;width: 200px; height: 100p; border: 1px dashed red;&quot;&gt;&lt;/div&gt;
+
+设置 div 的宽度为 300px
+
+div.style.width = &apos;300px&apos;;
+
+div.setAttribute( &apos;style&apos;, &apos;width: 300px; height: 100p; border: 1px dashed red;&apos; )
+
+var style = div.getAttribute( &apos;style&apos; );
+var styles = style.split( &apos;;&apos; );
+var styleObj = {};
+styles.forEach(function ( v ) {
+    var tmp = v.split( &apos;:&apos; );
+    styleObj[ tmp[ 0 ] ] = tmp[ 1 ];
+});
+// ...
+// 要修改样式只需要修改对象的属性即可, 最后要修改标签的时候
+var style2 = $.map( styleObj, function ( v, k ) {
+    return k + &apos;:&apos; + v;
+}).join( &apos;;&apos; );
+// ...
+
+
+在 jq 中 
+append 表示的是追加, 含义是将 后面参数中的 DOM 追加到 前面 对象的 子元素的结尾处. 与
+    appendChild 一致.
+$( &apos;body&apos; ).append( $( &apos;&lt;img src=&quot;....jpg&quot;/&gt;&apos; ) )
+与
+body.appendChild( img ) 
+是一样的
+
+appendTo 表示追加, 含义讲前面的元素 追加到 后面的元素的子元素的结尾处.
+$( &apos;&lt;img src=&quot;...jpg&quot;/&gt;&apos; ).appendTo( &apos;body&apos; )
+</code></pre><h3 id="2-自己封装一个函数完成数组遍历-要求模拟数组的-forEach-方法"><a href="#2-自己封装一个函数完成数组遍历-要求模拟数组的-forEach-方法" class="headerlink" title="2. 自己封装一个函数完成数组遍历, 要求模拟数组的 forEach 方法"></a>2. 自己封装一个函数完成数组遍历, 要求模拟数组的 forEach 方法</h3><pre><code>function each( arr, callback ) {
+
+} 
+
+each( [ 1, 2, 3 ], function ( v, i ) { 
+
+    // ...
+
+})
+
+1&gt; 函数中如果没有代码 数组的每一项就什么也不做
+2&gt; 函数中写什么代码 数组中的每一项就做什么事情
+3&gt; 也就是说函数在处理数组的每一项
+
+由于要处理每一项, 因此必须要遍历数组的每一个元素
+即有
+function each( arr, callback ) {
+    for ( var i= 0; i &lt; arr.length; i++ ) {
+        var item = arr[ i ];
+
+    }
+} 
+使用函数处理每一项就是用函数处理 item. 就是说将 item 传入函数处理
+function each( arr, callback ) {
+    for ( var i= 0; i &lt; arr.length; i++ ) {
+        var item = arr[ i ];
+        callback( item );
+    }
+}
+
+// 按照 数组的 forEach 方法实现 自己的 each 方法
+// 要求 有两个参数, 一个是需要遍历的数组, 一个是回调函数, 要求回调函数有两个参数, 分别是 v, i
+function each( arr, callback ) {
+    for ( var i = 0; i &lt; arr.length; i++ ) {
+        callback( arr[ i ], i );
+    }
+}
+
+// 改良第一步, 添加 this 的引用, 参数向 jq 靠拢
+function each( arr, callback ) {
+    for ( var i = 0; i &lt; arr.length; i++ ) {
+        callback.call( arr[ i ], i, arr[ i ] );
+    }
+}
+// 第二次改良, 在返回 false 的时候跳出循环, 注意, 返回 undefined, 0, 等不会跳出
+// 所以这里一定有一个完全等于, 跳出循环就是跳出 each 函数内的 for 即需要 break
+function each( arr, callback ) {
+    for ( var i = 0; i &lt; arr.length; i++ ) {
+        if ( callback.call( arr[ i ], i, arr[ i ] ) === false ) break;
+    }
+}
+// 第三个改良就是返回被遍历的对象
+function each( arr, callback ) {
+    for ( var i = 0; i &lt; arr.length; i++ ) {
+        if ( callback.call( arr[ i ], i, arr[ i ] ) === false ) break;
+    }
+    return arr;
+}
+
+遍历对象与遍历数组 有什么区别?
+-&gt; 遍历对象是将对象的所有键值对遍历出来( 包括自然数项, 如果有的话 )
+-&gt; 遍历数组就是在遍历自然数项
+
+让我们的 each 方法可以遍历对象
+要求, 不考虑数组, 只用 each 遍历对象 代码怎么写?
+function each( obj, callback ) {
+    for ( var k in obj ) {
+        if ( callback.call( obj[ k ], k, obj[ k ] ) === false ) break;
+    }
+    return obj;
+}
+
+判断数组或伪数组的依据就是 length &gt;= 0
+
+
+function each( arr, callback ) {
+    if ( arr.length &gt;= 0 ) {
+        for ( var i = 0; i &lt; arr.length; i++ ) {
+            if ( callback.call( arr[ i ], i, arr[ i ] ) === false ) break;
+        }
+    } else {
+        for ( var k in arr ) {
+            if ( callback.call( arr[ k ], k, arr[ k ] ) === false ) break;
+        }
+    }
+    return arr;
+}
+</code></pre><h3 id="3-封装-map"><a href="#3-封装-map" class="headerlink" title="3. 封装 map"></a>3. 封装 map</h3><pre><code>首先考虑, 只是处理 v 返回 结果( 实现一个 与 数组 的 map 一样的方法 )
+function map( arr, callback ) {
+    var rest = [];
+    for ( var i = 0; i &lt; arr.length; i++ ) {
+        // 要返回的数据是 回调函数的 返回值
+        rest.push( callback( arr[ i ], i ) );
+    }
+    return rest;
+}
+// 向 jq 靠拢
+// 1&gt; 不返回则不加到数组中
+// 2&gt; 遍历对象
+function map( arr, callback ) {
+    var rest = [], tmp;
+    if ( arr.length &gt;= 0 ) {
+        for ( var i = 0; i &lt; arr.length; i++ ) {
+            tmp = callback( arr[ i ], i );
+            if ( tmp != null ) {
+                rest.push( tmp );
+            }
+        }
+    } else {
+        for ( var k in arr ) {
+            tmp = callback( arr[ k ], k );
+            if ( tmp != null ) {
+                rest.push( tmp );
+            }
+        }
+    }
+    return rest;
+}
+</code></pre><h3 id="4-再回到原始的问题"><a href="#4-再回到原始的问题" class="headerlink" title="4. 再回到原始的问题"></a>4. 再回到原始的问题</h3><pre><code>使用 jq 来实现, 应该怎么写
+$( &apos;div, p&apos; ).each( ... )
+
+在 jq 中有两组遍历方法, 一个是静态的 each 和 map, 例如
+    $.map( arr, callback )
+    $.each( arr, callback )
+静态的方法遍历的是传入的对象或数组
+除此之外 jq 还提供了一组实例方法
+    $( ... ).each( function () { ... } )
+    $( ... ).map( function () { ... } )
+实例方法中遍历当前 jq 对象.
+
+    $( &apos;div&apos; ) 
+
+jq 的本质就是 伪数组
+利用 jq 判断页面中某一个元素是否存在: $( &apos;...&apos; ).length &gt; 0
+</code></pre><h3 id="5-框架的核心结构"><a href="#5-框架的核心结构" class="headerlink" title="5. 框架的核心结构"></a>5. 框架的核心结构</h3><pre><code>需求:
+1&gt; 有一个函数, 可以实现元素的获取功能( select -&gt; Array )
+2&gt; 这个函数返回的对象具有 each 方法. 该方法只有一个 回调函数的参数, 用于遍历每一个对象.
+
+先把函数写出来
+function I( selector ) {
+
+} 
+该函数可以获取元素
+function I( selector ) {
+    var list = document.querySelectorAll( selector ); // 伪数组
+}
+返回的数据应该就是这个 list, 但是又需要有 each 
+所以可以考虑直接让 list 带有 each 方法
+function I( selector ) {
+    var list = document.querySelectorAll( selector ); // 伪数组
+    list.each = function ( callback ) {
+        // 调用 该方法就是在 遍历 list 并将每一个元素用 callback 进行处理
+        each( this, callback );
+    }
+    return list
+}
+</code></pre><h3 id="6-引入构造函数-init"><a href="#6-引入构造函数-init" class="headerlink" title="6. 引入构造函数( init )"></a>6. 引入构造函数( init )</h3><pre><code>知道 list 是一个有 qsa 方法返回的对象, 每次提供 each 方法不合理, 而且 jq 有很多方法
+所以借助 oop 的知识应该使用 继承. 利用构造函数来创建 &quot;list 对象&quot;, 但是继承自提供 
+each 等方法的原型对象.
+
+function F( selector ) {
+    // 给 this 加 伪数组项
+}
+F.prototype.each = function () {
+
+} 
+
+
+考虑到 list 中每次都添加方法不合理, 而且冗余, 因此使用构造函数创建对象( 伪数组 ).
+让构造函数.prototype 提供各种方法, 那么实例对象( 伪数组 )就可以使用这些方法了.
+
+function F( selector ) {
+    // 给 this 加 伪数组项
+    var list = document.querySelectorAll( selector );
+    for( var i = 0; i &lt; list.length; i++ ) {
+        this[ i ] = list[ i ];
+    }
+    this.length = list.length;
+}
+F.prototype.each = function ( callback ) {
+    each( this, callback );
+};
+
+升级一下
+function F( selector ) {
+    // 给 this 加 伪数组项
+    [].push.apply( this, document.querySelectorAll( selector ) );
+}
+F.prototype.each = function ( callback ) {
+    each( this, callback );
+};
+
+如何使用呢?
+new F( &apos;div, p&apos; ).each( ... )
+</code></pre><h3 id="7-隐藏-new-关键字"><a href="#7-隐藏-new-关键字" class="headerlink" title="7. 隐藏 new 关键字"></a>7. 隐藏 new 关键字</h3><pre><code>考虑引入函数
+function iQuery( selector ) {
+    return new F( selector );
+}
+var I = iQuery;
+
+引入沙箱
+从沙箱中如果要暴露一些函数或对象采用方法有三种( 常用 )
+1&gt; 利用 window 参数
+    (function ( window ) {
+
+        window.xxx = vvv;
+    })( window );
+2&gt; 利用 返回值( 例如 Sizzle )
+    var Sizzle =
+    (function () {
+
+        return xxx;
+    })();
+3&gt; 利用 this 映射
+    (function () {
+        this.xxx = vvv;
+    })();
+
+
+缺点:
+1&gt; 代码结构凌乱. 优化结构.
+2&gt; 无法实现扩展, 只有在该文件中实现代码结构.
+</code></pre><h3 id="8-可扩展性"><a href="#8-可扩展性" class="headerlink" title="8. 可扩展性"></a>8. 可扩展性</h3><pre><code>1&gt; 可以将 iQuery 的一个属性指向构造函数
+    var iQuery = function ( selector ) {
+        return new F( selector );
+    }; 
+
+    ...
+    iQuery.F = F;
+    ...
+
+    此时对外的扩展
+    iQuery.F.prototype.xxx = vvv;
+
+2&gt; 在 jq 中采用是原型映射的办法, jq 中将 对外公开的 jquery 函数 与 构造函数 的原型用一个对象表示
+    // 类比
+    F.prototype = {};
+    iQuery.prototype = F.prototype;
+
+    //===============================================================
+
+    var jQuery = function ( selector ) {
+        return ...( selector );
+    };
+
+    jQuery.prototype = {
+        // 对象
+        constructor: jQuery,
+        each: function () ....
+    };  
+
+    var init = function ( selector ) {
+        // ... 构造函数 ...
+        // [].push.apply( this, document.querySelectorAll( selector ) );
+    };
+
+    init.prototype = jQuery.prototype;
+
+    //===============================================================
+
+    // 在 jq 中又 进一步处理
+    // 将 init 函数作为 jquery 的原型的一个方法
+    // 将所有的方法挂载到 jQuery 上, 便于优化与更新
+
+    // jquery 1.7 以后的写法
+    var jQuery = function ( selector ) {
+        return new jQuery.fn.init( selector );
+    };
+
+    jQuery.fn = jQuery.prototype = {
+        // 对象
+        constructor: jQuery
+    };  
+
+    var init = jQuery.fn.init = function ( selector ) {
+        // ...
+    };
+
+    init.prototype = jQuery.fn;
+
+
+    等价的写法
+
+    // jquery 1.7 以前的写法
+    var jQuery = function ( selector ) {
+        return new jQuery.fn.init( selector );
+    };
+
+    jQuery.fn = jQuery.prototype = {
+        // 对象
+        constructor: jQuery,
+        init: function ( selector ) {
+            // ...
+        }
+    };  
+
+    jQuery.fn.init.prototype = jQuery.fn;
+</code></pre>
       
     </div>
 
@@ -407,8 +765,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -450,6 +817,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-迭代"><span class="nav-number">1.</span> <span class="nav-text">1. 迭代</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-自己封装一个函数完成数组遍历-要求模拟数组的-forEach-方法"><span class="nav-number">2.</span> <span class="nav-text">2. 自己封装一个函数完成数组遍历, 要求模拟数组的 forEach 方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-封装-map"><span class="nav-number">3.</span> <span class="nav-text">3. 封装 map</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-再回到原始的问题"><span class="nav-number">4.</span> <span class="nav-text">4. 再回到原始的问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-框架的核心结构"><span class="nav-number">5.</span> <span class="nav-text">5. 框架的核心结构</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-引入构造函数-init"><span class="nav-number">6.</span> <span class="nav-text">6. 引入构造函数( init )</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-隐藏-new-关键字"><span class="nav-number">7.</span> <span class="nav-text">7. 隐藏 new 关键字</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-可扩展性"><span class="nav-number">8.</span> <span class="nav-text">8. 可扩展性</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
     </div>

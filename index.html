@@ -342,11 +342,10 @@
 <li>配置方式：<ul>
 <li>一种在 path 中写路径，通过英文分号分隔</li>
 <li>一种先定义变量，给一个变量值，然后在 path 中通过英文分号进行分隔，使用 <code>%变量名%</code> 引用该变量</li>
-<li><h2 id="2-Node-基础"><a href="#2-Node-基础" class="headerlink" title="2 . Node 基础"></a>2 . Node 基础</h2></li>
 </ul>
 </li>
 </ul>
-<h3 id="2-1-Node-中的-JavaScript"><a href="#2-1-Node-中的-JavaScript" class="headerlink" title="2.1 Node 中的 JavaScript"></a>2.1 Node 中的 JavaScript</h3><ul>
+<h2 id="2Node-基础"><a href="#2Node-基础" class="headerlink" title="2Node 基础"></a>2Node 基础</h2><h3 id="2-1-Node-中的-JavaScript"><a href="#2-1-Node-中的-JavaScript" class="headerlink" title="2.1 Node 中的 JavaScript"></a>2.1 Node 中的 JavaScript</h3><ul>
 <li><em>console</em></li>
 <li><em>setInterval(callback, delay[, …args])</em></li>
 <li><em>setTimeout(callback, delay[, …args])</em></li>
@@ -362,12 +361,12 @@
 <li>process</li>
 <li>require()</li>
 </ul>
-<h3 id="3-2-自定义模块（用户自己编写的模块）"><a href="#3-2-自定义模块（用户自己编写的模块）" class="headerlink" title="3.2 自定义模块（用户自己编写的模块）"></a>3.2 自定义模块（用户自己编写的模块）</h3><ul>
+<h3 id="2-2-自定义模块（用户自己编写的模块）"><a href="#2-2-自定义模块（用户自己编写的模块）" class="headerlink" title="2.2 自定义模块（用户自己编写的模块）"></a>2.2 自定义模块（用户自己编写的模块）</h3><ul>
 <li>require</li>
 <li>module.exports</li>
 <li>exports</li>
 </ul>
-<h3 id="3-3-模块（Node-提供）"><a href="#3-3-模块（Node-提供）" class="headerlink" title="3.3 模块（Node 提供）"></a>3.3 模块（Node 提供）</h3><h3 id="模块通信交互规则"><a href="#模块通信交互规则" class="headerlink" title="模块通信交互规则"></a>模块通信交互规则</h3><ul>
+<h3 id="2-3-模块（Node-提供）"><a href="#2-3-模块（Node-提供）" class="headerlink" title="2.3 模块（Node 提供）"></a>2.3 模块（Node 提供）</h3><h3 id="模块通信交互规则"><a href="#模块通信交互规则" class="headerlink" title="模块通信交互规则"></a>模块通信交互规则</h3><ul>
 <li>一个 JavaScript 文件就是一个模块</li>
 <li>模块天生就是一个私有的作用域，默认模块内定义的变量等成员只能被模块内部访问</li>
 <li>每一个模块中都有一个 <code>module.exports</code> 编程接口对象，默认是一个空对象<ul>
@@ -433,9 +432,9 @@
 </tr>
 </tbody>
 </table>
-<h3 id="3-4-第三方模块包与-Npm安装"><a href="#3-4-第三方模块包与-Npm安装" class="headerlink" title="3.4 第三方模块包与 Npm安装"></a>3.4 第三方模块包与 Npm安装</h3><p>只要安装了 node 就有了 npm。</p>
+<h3 id="2-4-第三方模块包与-Npm安装"><a href="#2-4-第三方模块包与-Npm安装" class="headerlink" title="2.4 第三方模块包与 Npm安装"></a>2.4 第三方模块包与 Npm安装</h3><p>只要安装了 node 就有了 npm。</p>
 <p>通过 <code>npm -v</code> 测试是否有 npm 工具。</p>
-<h3 id="使用-npm-安装包"><a href="#使用-npm-安装包" class="headerlink" title="使用 npm 安装包"></a>使用 npm 安装包</h3><ol>
+<h3 id="2-5使用-npm-安装包"><a href="#2-5使用-npm-安装包" class="headerlink" title="2.5使用 npm 安装包"></a>2.5使用 npm 安装包</h3><ol>
 <li>找到能解决自己问题的包，看文档使用说明</li>
 <li>通过 <code>npm install 包名</code> 下载到当前项目中的根目录</li>
 <li>在代码中通过 <code>require(&#39;第三方包名&#39;)</code> 使用你下载的包</li>

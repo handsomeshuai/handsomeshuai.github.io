@@ -11,11 +11,11 @@ let outputPath = './dev/dh-appactivity/hitPlane';
 module.exports = {
     devtool: 'eval-source-map',
     entry: {
-        main: srcPath + 'assets/js/main.js',
+        main: srcPath + 'main.js',
     },
     output: {
         path: path.resolve(outputPath),
-        filename: 'assets/[name].js?[hash]',
+        filename: '[name].js?[hash]',
         publicPath: '/'
     },
     module: {
@@ -61,9 +61,9 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.DefinePlugin({
-            __httpHost__: 99
-        }),
+        // new webpack.DefinePlugin({
+        //     __httpHost__: 99
+        // }),
         new htmlWebpackPlugin({
             template: srcPath + 'index.html',
             filename: 'index.html',
@@ -72,10 +72,10 @@ module.exports = {
 
         new ExtractTextWebpackPlugin('assets/[name].css'),
         new OptimizeCssAssetsPlugin(),
-        new CopyWebpackPlugin([{
-            from: srcPath + '/mock',
-            to: 'mock'
-        }])
+        // new CopyWebpackPlugin([{
+        //     from: srcPath + '/mock',
+        //     to: 'mock'
+        // }])
     ],
     resolve: {
         alias: {
@@ -85,14 +85,14 @@ module.exports = {
     },
     devServer: {
         contentBase: './unity/dh-appactivity/hitPlane',
-        proxy: {
-            '/activity/wechat/redeemcode/': {
-                target: 'http://218.205.115.242:18080/',
-                host: 'http://218.205.115.242:18080/',
-                changeOrigin: true,
-                secure: false
-            }
-        }
+        // proxy: {
+        //     '/activity/wechat/redeemcode/': {
+        //         target: 'http://218.205.115.242:18080/',
+        //         host: 'http://218.205.115.242:18080/',
+        //         changeOrigin: true,
+        //         secure: false
+        //     }
+        // }
 
     }
 };

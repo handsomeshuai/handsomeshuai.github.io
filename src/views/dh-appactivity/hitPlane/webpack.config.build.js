@@ -15,7 +15,7 @@ module.exports = {
     },
     output: {
         path: path.resolve(outputPath),
-        filename: 'assets/[name].js?[hash]',
+        filename: '[name].js?[hash]',
         publicPath: '/dh-appactivity/hitPlane/'
     },
     module: {

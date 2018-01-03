@@ -1,0 +1,7 @@
+.idea
+/node_modules/
+*.iml
+/webpack.config.dev.js
+/webpack.config.build.js
+/dev/
+/pub/

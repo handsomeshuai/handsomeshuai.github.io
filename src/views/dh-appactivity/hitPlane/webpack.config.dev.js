@@ -11,7 +11,7 @@ let outputPath = './dev/dh-appactivity/hitPlane';
 module.exports = {
     devtool: 'eval-source-map',
     entry: {
-        main: srcPath + 'main.js',
+        main: srcPath + 'main.js'
     },
     output: {
         path: path.resolve(outputPath),

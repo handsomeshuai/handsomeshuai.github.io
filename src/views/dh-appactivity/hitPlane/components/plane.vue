@@ -9,21 +9,21 @@ export default {
   data () {
     return {
 
-    }
+    };
   },
-  mounted (){
+  mounted () {
     this.init();
   },
   methods:{
-    change (){
+    change () {
         this.$refs.msg.style.color='red'
     },
-    init (){
+    init () {
         var cas = document.getElementById('canvas');
         var ctx = cas.getContext("2d");
         var img = new Image();
 
-            img.onload=function(){
+            img.onload = function () {
                 ctx.clearRect(0, 0, cas.width, cas.height);
                 ctx.drawImage(img, 50, 300);
             }
@@ -46,22 +46,22 @@ export default {
                        flag = 0;
                        break;
                }
-           }
+           };
     }
   }
-}
+};
 </script>
 <style>
-div{
-width:100%;
-height:100%
-}
+    div{
+    width:100%;
+    height:100%
+    }
     canvas{
         width:100%;
         height:100%
     }
   img{
-  width:100px;
-  height:100px
+    width:100px;
+    height:100px
   }
 </style>

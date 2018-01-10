@@ -14,7 +14,18 @@
 </head>
 <body>
 <div id="app">
-    <plane></plane>
+    <!--<plane :img-src="imgSrc"></plane>-->
+
+        <div>
+            <ul>
+                <li v-for="(item ,index) in imgList">
+                    <img :src="item.src" alt="">
+                </li>
+            </ul>
+        </div>
+
+    <img src="./imgs/plane.jpg" alt="">
+    <p>ssssssssdddddddd</p>
 </div>
 </body>
 </html>

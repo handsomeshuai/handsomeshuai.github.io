@@ -23,11 +23,11 @@ export default {
         var ctx = cas.getContext("2d");
         var img = new Image();
 
-            img.onload = function () {
-                ctx.clearRect(0, 0, cas.width, cas.height);
-                ctx.drawImage(img, 50, 300);
-            }
-            img.src = "../imgs/plane.jpg";
+        img.onload = function () {
+            ctx.clearRect(0, 0, cas.width, cas.height);
+            ctx.drawImage(img, 50, 300);
+        }
+        img.src = "../imgs/plane.jpg";
             var flag = 0;   //方向的标志
 
             //*************按方向键，让人物转变方向 左-37 上-38 右-39 下-40 *******************

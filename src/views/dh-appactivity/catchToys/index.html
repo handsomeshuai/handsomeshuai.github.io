@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no,minimal-ui">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="public">
+    <meta http-equiv="Expires" content="0">
+    <title>抓娃娃机</title>
+    <style>
+        html,body{
+            width:100%;
+            height:100%;
+            margin: 0;
+            padding: 0;
+            position:relative;
+        }
+        .head {
+            width: 100%;
+            height: 100px;
+            background-color: pink;
+        }
+        .top{
+            width:100px;
+            height:40px;
+            background-color: lightblue;
+            margin: 0 auto;
+        }
+        .line{
+            width:5px;
+            height:30px;
+            margin: 0 auto;
+            background: url("./imgs/line.png") no-repeat center;
+            background-size: cover;
+
+        }
+        .hand{
+            width:100px;
+            margin: 0 auto;
+        }
+        .hand img{
+            display: block;
+            width:100%;
+        }
+        .big{
+            position: absolute;
+            top:320px;
+            height:100px;
+            width:296px;
+            overflow-x: hidden;
+            overflow-y: visible;
+            left:50%;
+            margin-left:-148px;
+        }
+        .ul{
+            position: absolute;
+            top:0px;
+            height:100px;
+            width:296px;
+            /*overflow: hidden;*/
+        }
+        .toy{
+            position: absolute;
+            top:0px;
+            left:50%;
+            width:92px;
+            height:100px;
+        }
+        .toy img{
+            display: block;
+            width:100%;
+        }
+        .toy1{
+            margin-left: -148px;
+        }
+        .toy2{
+            margin-left: -46px;
+        }
+        .toy3{
+            margin-left: 56px;
+        }
+        .toy4{
+            margin-left: 158px;
+        }
+        .toy5{
+            margin-left: 260px;
+        }
+        .toy6{
+            margin-left: 362px;
+        }
+
+        .btn{
+            position: fixed;
+            left: 50%;
+            margin-left:-50px;
+            bottom: 10px;
+            width:100px;
+            height:50px;
+            background-color: orange;
+        }
+       @keyframes zhua {
+           0%{
+               height:30px;
+           }
+           50%{
+               height:200px;
+           }
+           100%{
+               height:30px;
+           }
+       }
+        @keyframes goup {
+            0%{
+                top:0px;
+            }
+            100%{
+                top:-200px;
+            }
+        }
+        /*@keyframes swiper {*/
+            /*0%{*/
+                /*transform:translate(0);*/
+            /*}*/
+            /*100%{*/
+                /*transform:translate(-85px);*/
+            /*}*/
+        /*}*/
+    </style>
+</head>
+<body>
+    <div class="head">
+        <div class="top"></div>
+        <div class="line">
+
+        </div>
+        <div class="hand">
+            <img src="./imgs/open.png" alt="" class="gouzi">
+        </div>
+    </div>
+    <div class="big">
+        <div class="ul">
+        <div class="toy toy1">
+            <img src="./imgs/icon_1.png" alt="">
+        </div>
+        <div class="toy toy2">
+            <img src="./imgs/icon_2.png" alt="">
+        </div>
+        <div class="toy toy3">
+            <img src="./imgs/toy1.png" alt="">
+        </div>
+        <div class="toy toy4">
+            <img src="./imgs/icon_3.png" alt="">
+        </div>
+        <div class="toy toy5">
+            <img src="./imgs/icon_4.png" alt="">
+        </div>
+            <div class="toy toy6">
+                <img src="./imgs/icon_1.png" alt="">
+            </div>
+    </div></div>
+
+
+    <div class="btn" >
+
+    </div>
+</body>
+<script>
+
+    window.onload=function () {
+        var x,y;
+        var gouzi = document.querySelector('.gouzi');
+        x = gouzi.offsetLeft;
+        y = x + gouzi.offsetWidth;
+        console.log(x,y);
+        document.querySelector('.btn').onclick=function () {
+            document.querySelector('.line').style.animation=' zhua 2s ';
+            setTimeout(function () {
+                gouzi.src='./imgs/close.png';
+                list();
+            },1000);
+            setTimeout(function () {
+                gouzi.src='./imgs/open.png';
+                document.querySelector('.line').style.animation='';
+            },2000)
+        };
+        // ------------中奖者名单滚动动画
+        var $winlist = document.querySelector('.ul');
+        var winlist_num =-1;
+        var st = 1000;
+        (function winlistRoller () {
+            if (winlist_num ===4) {
+                $winlist.style.transition=null;
+                winlist_num = 0;
+                st = 0;
+            } else {
+                winlist_num++;
+                $winlist.style.transition="all 1s";
+                st = 1500;
+            }
+            var a=function () {
+                   if ($winlist) {
+                       $winlist.style.webkitTransform = 'translateX(' + (-1 * winlist_num * 102) + 'px)';
+                       $winlist.style.MozTransform = 'translateX(' + (-1 * winlist_num * 102) + 'px)';
+                       $winlist.style.msTransform = 'translateX(' + (-1 * winlist_num * 102) + 'px)';
+                       $winlist.style.OTransform = 'translateX(' + (-1 * winlist_num *102) + 'px)';
+                       $winlist.style.transform = 'translateX(' + (-1 * winlist_num * 102) + 'px)';
+                   } else {
+                       $winlist = document.querySelector('.ul');
+                   }
+               };
+               a();
+                setTimeout(winlistRoller, st);
+        })();
+        
+        var list = function () {
+            var lists = document.querySelector('.ul').children;
+            for (var i = 0 ;i <lists.length; i++){
+                var x1 =lists[i].offsetLeft;
+                var y1 = x1 + lists[i].offsetWidth;
+                console.log(x1,y1,x,y);
+                if ((x1+46>x && y1 <y)||(y1>y&&y1-y<lists[i].offsetWidth/2)){
+                    lists[i].style.animation=' goup 1s ';
+                    console.log(lists[i])
+                }
+
+            }
+        }
+    }
+</script>
+</html>

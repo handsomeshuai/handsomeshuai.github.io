@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^0.17.1",
     "echarts": "^4.0.4",
+    "express": "^4.16.3",
     "vee-validate": "^2.0.0-rc.21",
     "vue": "^2.5.3"
   },
